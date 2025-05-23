@@ -1,12 +1,7 @@
-//
-//  AppDelegate.swift
-//  FirebaseInstagramClone
-//
-//  Created by Yusuf Bugra on 18.05.2025.
-//
-
 import UIKit
-
+import FirebaseCore
+import FirebaseStorage
+import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -14,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
