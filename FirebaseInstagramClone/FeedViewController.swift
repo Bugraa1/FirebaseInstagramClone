@@ -1,5 +1,3 @@
-
-
 import UIKit
 import Firebase
 import FirebaseFirestore
@@ -31,8 +29,9 @@ class FeedViewController: UIViewController , UITableViewDelegate , UITableViewDa
         firestoreDatabase.collection("Posts").order(by: "date", descending: true).addSnapshotListener { snapshot, error in
             
             if error != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "error")
             } else {
+                
                 if snapshot?.isEmpty != true && snapshot != nil {
                     
                     self.imageArray.removeAll(keepingCapacity: false)
@@ -57,7 +56,9 @@ class FeedViewController: UIViewController , UITableViewDelegate , UITableViewDa
                         if let imageUrl = document.get("imageUrl") as? String {
                             self.imageArray.append(imageUrl)
                         }
+                        
                      }
+                    
                     self.tableView.reloadData()
                 }
             }
@@ -78,6 +79,7 @@ class FeedViewController: UIViewController , UITableViewDelegate , UITableViewDa
         cell.userCommentLabel.text = commentArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
         cell.documentIdLabel.text = documentIdArray[indexPath.row]
+        
         return cell
         
     }
